@@ -59,10 +59,8 @@ def main():
                 status = order[0].get("status") if order else ""
                 if status == "Filled":
                     bot.wallet.deleteOrderHistory(bot.asset_pair)
-                    # last_price = bot.get_last_price()
                     bot.grid[n] = ""
                     last_level = n
-                    last_price = bot.get_last_price()
                     filled_price = order[0].get("price")
                     filled_type = order[0].get("type")
                     bot.log("## [%03d] %s%-4s Filled %18.*f%s" % (
@@ -71,15 +69,10 @@ def main():
                                 bot.asset_pair.asset2.decimals - bot.asset_pair.asset1.decimals)), COLOR_RESET))
 
                     if filled_type == "buy":
-                        if filled_price >= last_price:
-                            bot.sell(n + 1)
-                        else:
-                            bot.buy(n)
+                        bot.sell(n+1)
                     elif filled_type == "sell":
-                        if filled_price <= last_price:
-                            bot.buy(n - 1)
-                        else:
-                            bot.sell(n)
+                        bot.buy(n - 1)
+
                 # attempt to place again orders for empty grid levels or cancelled orders
                 elif (status == "" or status == "Cancelled") and bot.grid[n] != "-":
                     bot.grid[n] = ""
