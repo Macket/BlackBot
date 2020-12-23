@@ -1,0 +1,2 @@
+PyWaves==0.8.38
+configparser==5.0.1
