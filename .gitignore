@@ -2,3 +2,5 @@
 
 *.cfg
 !example.cfg
+
+env/
