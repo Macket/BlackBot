@@ -1,6 +1,9 @@
 .idea
+__pycache__/
 
 *.cfg
 !example.cfg
 
 env/
+
+*.log
