@@ -131,7 +131,7 @@ class BlackBot:
         return base_price
 
     def get_level_price(self, level):
-        return int(self.base_price * (1 + self.interval) ** (level - self.grid_levels / 2))
+        return int(self.base_price * (1 + self.interval) ** (level - self.grid_levels // 2))
 
     def init_grid(self, base_level):
         self.log("Grid initialisation [base price : %.*f]" % (
