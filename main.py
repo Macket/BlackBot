@@ -38,6 +38,7 @@ def main():
     bot.log("")
 
     last_level = int(bot.grid_levels / 2)
+    bot.init_grid(last_level)
 
     # loop forever
     while True:
